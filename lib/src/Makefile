@@ -12,6 +12,7 @@ SRC=		my_putchar.c		\
 		my_strcat.c		\
 		my_getnbr.c		\
 		my_str_isnum.c		\
+		get_next_line.c		\
 
 OBJ=		$(SRC:.c=.o)
 
@@ -20,7 +21,6 @@ CFLAGS=		-W -Wall -fno-builtin
 CPPFLAGS=	-I ../../include
 
 NAME=		libmy.a
-
 
 all:		$(NAME)
 
