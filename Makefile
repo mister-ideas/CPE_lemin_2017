@@ -10,6 +10,8 @@ SRC_DIR=	src
 SRC=		$(SRC_DIR)/lem_in.c		\
 		$(SRC_DIR)/linked_list.c	\
 		$(SRC_DIR)/parsing.c		\
+		$(SRC_DIR)/get_names.c		\
+		$(SRC_DIR)/detect.c		\
 
 OBJ=		$(SRC:.c=.o)
 

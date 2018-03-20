@@ -9,6 +9,6 @@
 
 int main(void)
 {
-	parsing();
+	parsing_init();
 	return (0);
 }

@@ -18,35 +18,46 @@ char *next_data(char *cur_data)
 	return (cur_data);
 }
 
-
-void detect_commands(char *cur_data, int start, int end)
+int check_start_end(anthil_t *anthil, char *cur_data, int start, int end)
 {
-	if (cur_data[0] == '#' && cur_data[1] == '#' && cur_data[2] == 's'
-	    && cur_data[3] == 't' && cur_data[4] == 'a' && cur_data[5] == 'r'
-	    && cur_data[6] == 't' && cur_data[7] == '\n')
-		start = 1;
-	else if (cur_data[0] == '#' && cur_data[1] == '#' && cur_data[2] == 'e'
-		 && cur_data[3] == 'n' && cur_data[4] == 'd' && cur_data[5] == '\n')
-		end = 1;
-	else
-		detect_type(cur_data);
-}
-
-void detect_type(char *cur_data, int start, int end)
-{
-	for (int i = 0; cur_data[i]; i++) {
-		if (cur_data[i] == '-') {
-		}			
+	if (start == 1) {
+		anthil->start = get_names(anthil, cur_data, 1);
+		if (anthil->start == NULL)
+			return (84);
+		start = 0;
 	}
+	else if (end == 1) {
+		anthil->end = get_names(anthil, cur_data, 1);
+		if (anthil->end == NULL)
+			return (84);
+		end = 0;
+	}
+	return (0);
 }
 
-int parsing(void)
+int parsing_loop(anthil_t *anthil, char *cur_data)
+{
+	int start = 0;
+	int end = 0;
+
+	next_data(cur_data);
+	if (my_str_isnum(cur_data) == 0)
+		return (84);
+	anthil->nb_ants = my_getnbr(cur_data);
+	while (cur_data != NULL) {
+		next_data(cur_data);
+		if (check_start_end(anthil, cur_data, start, end) == 84)
+			return (84);
+		if (detect_commands(anthil, cur_data, start, end) == 84)
+			return (84);
+	}
+	return (0);
+}
+
+int parsing_init(void)
 {
 	anthil_t *anthil = malloc(sizeof(*anthil));
 	char *cur_data = NULL;
-	
-	int start = 0;
-	int end = 0;
 
 	if (anthil == NULL)
 		return (84);
@@ -54,21 +65,7 @@ int parsing(void)
 	anthil->tunnels = tunnels_list_init();
 	if (anthil->rooms == NULL || anthil->tunnels)
 		return (84);
-	next_data(cur_data);
-	if (my_str_isnum(cur_data) == 0)
+	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
-	anthil->nb_ants = my_getnbr(cur_data);
-	while (cur_data != NULL) {
-		next_data(cur_data);
-		if (start == 1) {
-			anthil->start = cur_data;
-			start = 0;
-		}
-		else if (end == 1) {
-			anthil->end = cur_data;
-			end = 0;
-		}
-		detect_commands(cur_data, start, end);
-	}
 	return (0);
 }

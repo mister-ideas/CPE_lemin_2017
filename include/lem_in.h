@@ -18,6 +18,20 @@ typedef struct anthil {
 	tunnels_t *tunnels;
 } anthil_t;
 
-int parsing(void);
+/* parsing.c */
+
+int parsing_init(void);
+
+/* get_names.c */
+
+void get_start_end_names(char *cur_data, char *name1);
+void get_room_name(anthil_t *anthil, char *cur_data, char *name1);
+void get_tunnel_names(anthil_t *anthil, char *cur_data,
+		char *name1, char *name2);
+char *get_names(anthil_t *anthil, char *cur_data, int mode);
+
+/* detect.c */
+
+int detect_commands(anthil_t *anthil, char *cur_data, int start, int end);
 
 #endif
