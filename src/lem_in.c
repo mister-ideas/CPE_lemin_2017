@@ -5,18 +5,7 @@
 ** lem_in.c
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int parsing(void)
-{
-	struct anthil anthil = malloc(sizeof(anthil));
-	char *cur_data = NULL;
-
-	if (!anthil)
-		return (84);
-	return (0);
-}
+#include "lem_in.h"
 
 int main(void)
 {

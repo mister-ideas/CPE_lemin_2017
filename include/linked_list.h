@@ -33,8 +33,8 @@ typedef struct tunnels
 	tunnel_elem_t *first;
 } tunnels_t;
 
-rooms_t *init_rooms_list();
-tunnels_t *init_tunnels_list();
+rooms_t *rooms_list_init();
+tunnels_t *tunnels_list_init();
 
 int rooms_list_insert(rooms_t *list, char *room);
 int tunnels_list_insert(tunnels_t *list, char *entrance, char *exit);
