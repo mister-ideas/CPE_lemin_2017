@@ -12,7 +12,7 @@
 int main(int ac, char **av)
 {
 	anthil_t *anthil;
-
+	char **tabmap;
 	if (ac > 1)
 		return (84);
 	anthil = malloc(sizeof(*anthil));
@@ -20,5 +20,6 @@ int main(int ac, char **av)
 		return (84);
 	if (parsing_init(anthil) == 84)
 		return (84);
+	tabmap =  init_tab(anthil);
 	return (0);
 }

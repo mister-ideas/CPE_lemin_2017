@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "lem_in.h"
 
-int init_tab(anthil_t *anthil)
+char **init_tab(anthil_t *anthil)
 {
 	char **tabmap;
 	tabmap = malloc(sizeof(char *) * anthil->nb_rooms);
@@ -23,6 +23,6 @@ int init_tab(anthil_t *anthil)
 		}
 	}
 	for(int i = 0;i < anthil->nb_rooms;i++)
-		printf("tabmap : %s\n",tabmap[i]);
-	return (0);
+		printf("%s\n",tabmap[i]);
+	return (tabmap);
 }
