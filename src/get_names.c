@@ -38,6 +38,7 @@ int get_tunnel_names(anthil_t *anthil, char *cur_data,
 {
 	int index = 0;
 	int i;
+	int j = 0;
 
 	for (i = 0; cur_data[i]; i++) {
 		if (cur_data[i] == '-')
@@ -46,11 +47,14 @@ int get_tunnel_names(anthil_t *anthil, char *cur_data,
 	for (i = 0; cur_data[i]; i++) {
 		if (i < index)
 			name1[i] = cur_data[i];
-		if (i > index)
-			name2[i] = cur_data[i];
+		if (i > index) {
+			name2[j] = cur_data[i];
+			j++;
+		}
 	}
 	name1[index] = '\0';
-	name2[i] = '\0';
+	name2[my_strlen(cur_data) - index] = '\0';
+	printf("%s : %s - %s\n", "tunnel", name1, name2);
 	if (tunnels_list_insert(anthil->tunnels, name1, name2) == 84)
 		return (84);
 	return (0);

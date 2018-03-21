@@ -13,6 +13,8 @@
 char *next_data(char *cur_data)
 {
 	cur_data = get_next_line(0);
+	if (cur_data == NULL)
+		return (NULL);
 	if (cur_data[0] == '#' && cur_data[1] != '#')
 		cur_data = get_next_line(0);
 	return (cur_data);
@@ -46,10 +48,8 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 		return (84);
 	anthil->nb_ants = my_getnbr(cur_data);
 	printf("%s : %d\n", "nb_ants", anthil->nb_ants);
-	while (1) {
+	while (cur_data) {
 		cur_data = next_data(cur_data);
-		if (cur_data == NULL)
-			break;
 		if (check_start_end(anthil, cur_data) == 84)
 			return (84);
 		if (detect_commands(anthil, cur_data) == 84)
