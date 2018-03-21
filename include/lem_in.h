@@ -23,7 +23,7 @@ typedef struct anthil {
 
 /* parsing.c */
 
-int parsing_init(void);
+int parsing_init(anthil_t *anthil);
 
 /* get_names.c */
 

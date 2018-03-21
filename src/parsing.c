@@ -56,13 +56,10 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	return (0);
 }
 
-int parsing_init(void)
+int parsing_init(anthil_t *anthil)
 {
-	anthil_t *anthil = malloc(sizeof(*anthil));
 	char *cur_data = NULL;
 
-	if (anthil == NULL)
-		return (84);
 	anthil->rooms = rooms_list_init();
 	anthil->tunnels = tunnels_list_init();
 	if (anthil->rooms == NULL || anthil->tunnels == NULL)
