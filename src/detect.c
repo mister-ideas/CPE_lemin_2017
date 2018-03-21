@@ -44,8 +44,10 @@ int detect_type(anthil_t *anthil, char *cur_data)
 
 int detect_commands(anthil_t *anthil, char *cur_data)
 {
-	if (cur_data == NULL)
+	if (cur_data == NULL) {
+		printf("K\n");
 		return (84);
+	}
 	if (my_strlen(cur_data) == 7 && cur_data[0] == '#' && cur_data[1] == '#'
 	&& cur_data[2] == 's' && cur_data[3] == 't' && cur_data[4] == 'a'
 	&& cur_data[5] == 'r' && cur_data[6] == 't' && cur_data[7] == '\0')
@@ -55,8 +57,10 @@ int detect_commands(anthil_t *anthil, char *cur_data)
 		&& cur_data[5] == '\0')
 		anthil->is_end = 1;
 	else {
-		if (detect_type(anthil, cur_data) == 84)
+		if (detect_type(anthil, cur_data) == 84) {
+			printf("L\n");
 			return (84);
+		}
 	}
 	return (0);
 }

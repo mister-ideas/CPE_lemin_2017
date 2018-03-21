@@ -12,6 +12,7 @@ SRC=		$(SRC_DIR)/lem_in.c		\
 		$(SRC_DIR)/parsing.c		\
 		$(SRC_DIR)/get_names.c		\
 		$(SRC_DIR)/detect.c		\
+		$(SRC_DIR)/init_tab.c		\
 
 OBJ=		$(SRC:.c=.o)
 

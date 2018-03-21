@@ -23,10 +23,11 @@ typedef struct anthil {
 
 /* parsing.c */
 
-int parsing_init(void);
+anthil_t * parsing_init(void);
 
 /* get_names.c */
 
+int init_tab(anthil_t *anthil);
 void get_start_end_names(char *cur_data, char *name1);
 int get_room_name(anthil_t *anthil, char *cur_data, char *name1);
 int get_tunnel_names(anthil_t *anthil, char *cur_data,
