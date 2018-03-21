@@ -18,39 +18,41 @@ char *next_data(char *cur_data)
 	return (cur_data);
 }
 
-int check_start_end(anthil_t *anthil, char *cur_data, int start, int end)
+int check_start_end(anthil_t *anthil, char *cur_data)
 {
-	if (start == 1) {
+	if (anthil->is_start == 1) {
 		anthil->start = get_names(anthil, cur_data, 1);
 		if (anthil->start == NULL)
 			return (84);
-		start = 0;
+		anthil->is_start = 2;
 	}
-	else if (end == 1) {
+	else if (anthil->is_end == 1) {
 		anthil->end = get_names(anthil, cur_data, 1);
 		if (anthil->end == NULL)
 			return (84);
-		end = 0;
+		anthil->is_end = 2;
 	}
 	return (0);
 }
 
 int parsing_loop(anthil_t *anthil, char *cur_data)
 {
-	int start = 0;
-	int end = 0;
-
-	next_data(cur_data);
+	anthil->is_start = 0;
+	anthil->is_end = 0;
+	cur_data = next_data(cur_data);
 	if (cur_data == NULL)
 		return (84);
 	if (my_str_isnum(cur_data) == 0)
 		return (84);
 	anthil->nb_ants = my_getnbr(cur_data);
-	while (cur_data != NULL) {
-		next_data(cur_data);
-		if (check_start_end(anthil, cur_data, start, end) == 84)
+	printf("%s : %d\n\n", "nb_ants", anthil->nb_ants);
+	while (1) {
+		cur_data = next_data(cur_data);
+		if (cur_data == NULL)
+			break;
+		if (check_start_end(anthil, cur_data) == 84)
 			return (84);
-		if (detect_commands(anthil, cur_data, start, end) == 84)
+		if (detect_commands(anthil, cur_data) == 84)
 			return (84);
 	}
 	return (0);
@@ -69,6 +71,6 @@ int parsing_init(void)
 		return (84);
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
-	anthil->rooms->nb_elems = anthil->nb_rooms;
+	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
 	return (0);
 }

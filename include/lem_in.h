@@ -17,6 +17,8 @@ typedef struct anthil {
 	char *end;
 	rooms_t *rooms;
 	tunnels_t *tunnels;
+	int is_start;
+	int is_end;
 } anthil_t;
 
 /* parsing.c */
@@ -33,6 +35,6 @@ char *get_names(anthil_t *anthil, char *cur_data, int mode);
 
 /* detect.c */
 
-int detect_commands(anthil_t *anthil, char *cur_data, int start, int end);
+int detect_commands(anthil_t *anthil, char *cur_data);
 
 #endif
