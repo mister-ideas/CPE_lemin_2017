@@ -13,11 +13,9 @@
 char *next_data(char *cur_data)
 {
 	cur_data = get_next_line(0);
-	if (cur_data == NULL) {
-		printf("M\n");
-		return (NULL);
-	}
-	if (cur_data[0] == '#' && cur_data[1] != '#')
+	if (cur_data == NULL)
+		return (0);
+	if (cur_data && cur_data[0] == '#' && cur_data[1] != '#')
 		cur_data = get_next_line(0);
 	return (cur_data);
 }
@@ -68,9 +66,8 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	return (0);
 }
 
-anthil_t *parsing_init(void)
+int parsing_init(anthil_t *anthil)
 {
-	anthil_t *anthil = malloc(sizeof(*anthil));
 	char *cur_data = NULL;
 
 	if (anthil == NULL) {
@@ -88,5 +85,6 @@ anthil_t *parsing_init(void)
 		return (NULL);
 	}
 	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
-	return (anthil);
+	printf("%d", anthil->nb_rooms);
+	return (0);
 }

@@ -5,16 +5,20 @@
 ** lem_in.c
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "lem_in.h"
 
-int main(void)
+int main(int ac, char **av)
 {
 	anthil_t *anthil;
 
-	anthil = parsing_init();
+	if (ac > 1)
+		return (84);
+	anthil = malloc(sizeof(*anthil));
 	if (anthil == NULL)
-		return (3);
-	init_tab(anthil);
-	return (53);
+		return (84);
+	if (parsing_init(anthil) == 84)
+		return (84);
+	return (0);
 }
