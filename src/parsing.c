@@ -13,9 +13,7 @@
 char *next_data(char *cur_data)
 {
 	cur_data = get_next_line(0);
-	if (cur_data == NULL)
-		return (NULL);
-	if (cur_data[0] == '#' && cur_data[1] != '#')
+	if (cur_data && cur_data[0] == '#' && cur_data[1] != '#')
 		cur_data = get_next_line(0);
 	return (cur_data);
 }
@@ -72,5 +70,6 @@ int parsing_init(void)
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
 	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
+	printf("%d", anthil->nb_rooms);
 	return (0);
 }
