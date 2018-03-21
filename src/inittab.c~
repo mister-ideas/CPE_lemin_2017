@@ -1,0 +1,16 @@
+/*
+** EPITECH PROJECT, 2018
+** inittab
+** File description:
+** initab.c
+*/
+int inittab()
+{
+char **tabmap;
+        tabmap = malloc(sizeof(char *) * nbrligne + 2);
+
+        for(int i = 0;i < nbrligne + 2;i++){
+                tabmap[i] = malloc(sizeof(char) * (nbrligne + 3));
+                 tabmap[i][nbrligne + 2] = '\0';
+        }
+}
