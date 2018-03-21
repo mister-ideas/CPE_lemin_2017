@@ -72,17 +72,17 @@ int parsing_init(anthil_t *anthil)
 
 	if (anthil == NULL) {
 		printf("A\n");
-		return (NULL);
+		return (84);
 	}
 	anthil->rooms = rooms_list_init();
 	anthil->tunnels = tunnels_list_init();
 	if (anthil->rooms == NULL || anthil->tunnels == NULL) {
 		printf("B\n");
-		return (NULL);
+		return (84);
 	}
 	if (parsing_loop(anthil, cur_data) == 84) {
 		printf("C\n");
-		return (NULL);
+		return (84);
 	}
 	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
 	printf("%d", anthil->nb_rooms);
