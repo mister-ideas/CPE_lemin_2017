@@ -7,10 +7,9 @@
 
 int my_strlen(char const *str)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
-	while (str[i] != '\0')
-		i += 1;
+	while (str[i])
+		i++;
 	return (i);
 }

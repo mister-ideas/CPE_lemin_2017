@@ -41,6 +41,8 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	int end = 0;
 
 	next_data(cur_data);
+	if (cur_data == NULL)
+		return (84);
 	if (my_str_isnum(cur_data) == 0)
 		return (84);
 	anthil->nb_ants = my_getnbr(cur_data);
