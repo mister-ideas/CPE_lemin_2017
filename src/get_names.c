@@ -19,17 +19,19 @@ void get_start_end_names(char *cur_data, char *name1)
 	name1[i] = '\0';
 }
 
-void get_room_name(anthil_t *anthil, char *cur_data, char *name1)
+int get_room_name(anthil_t *anthil, char *cur_data, char *name1)
 {
 	int i;
 
 	for (i = 0; cur_data[i] != ' '; i++)
 		name1[i] = cur_data[i];
 	name1[i] = '\0';
-	rooms_list_insert(anthil->rooms, name1);
+	if (rooms_list_insert(anthil->rooms, name1) == 84)
+		return (84);
+	return (0);
 }
 
-void get_tunnel_names(anthil_t *anthil, char *cur_data,
+int get_tunnel_names(anthil_t *anthil, char *cur_data,
 		char *name1, char *name2)
 {
 	int index = 0;
@@ -47,7 +49,9 @@ void get_tunnel_names(anthil_t *anthil, char *cur_data,
 	}
 	name1[index] = '\0';
 	name2[i] = '\0';
-	tunnels_list_insert(anthil->tunnels, name1, name2);
+	if (tunnels_list_insert(anthil->tunnels, name1, name2) == 84)
+		return (84);
+	return (0);
 }
 
 char *get_names(anthil_t *anthil, char *cur_data, int mode)
@@ -62,10 +66,12 @@ char *get_names(anthil_t *anthil, char *cur_data, int mode)
 		get_start_end_names(cur_data, name1);
 		break;
 	case 2:
-		get_room_name(anthil, cur_data, name1);
+		if (get_room_name(anthil, cur_data, name1) == 84)
+			return (NULL);
 		break;
 	case 3:
-		get_tunnel_names(anthil, cur_data, name1, name2);
+		if (get_tunnel_names(anthil, cur_data, name1, name2) == 84)
+			return (NULL);
 		break;
 	}
 	return (name1);

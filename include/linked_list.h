@@ -18,6 +18,7 @@ struct room_elem
 typedef struct rooms
 {
 	room_elem_t *first;
+	int nb_elems;
 } rooms_t;
 
 typedef struct tunnel_elem tunnel_elem_t;

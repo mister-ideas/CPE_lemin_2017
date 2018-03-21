@@ -45,6 +45,7 @@ int rooms_list_insert(rooms_t *list, char *room)
 	new->room_name = room;
 	new->next = list->first;
 	list->first = new;
+	list->nb_elems += 1;
 	return (0);
 }
 

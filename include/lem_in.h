@@ -12,6 +12,7 @@
 
 typedef struct anthil {
 	int nb_ants;
+	int nb_rooms;
 	char *start;
 	char *end;
 	rooms_t *rooms;

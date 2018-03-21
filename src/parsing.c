@@ -63,9 +63,10 @@ int parsing_init(void)
 		return (84);
 	anthil->rooms = rooms_list_init();
 	anthil->tunnels = tunnels_list_init();
-	if (anthil->rooms == NULL || anthil->tunnels)
+	if (anthil->rooms == NULL || anthil->tunnels == NULL)
 		return (84);
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
+	anthil->rooms->nb_elems = anthil->nb_rooms;
 	return (0);
 }
