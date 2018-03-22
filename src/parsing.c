@@ -13,6 +13,8 @@
 char *next_data(char *cur_data)
 {
 	cur_data = get_next_line(0);
+	if (cur_data == NULL)
+		return (0);
 	if (cur_data && cur_data[0] == '#' && cur_data[1] != '#')
 		cur_data = get_next_line(0);
 	return (cur_data);
@@ -40,18 +42,22 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	anthil->is_start = 0;
 	anthil->is_end = 0;
 	cur_data = next_data(cur_data);
-	if (cur_data == NULL)
+	if (cur_data == NULL) 
 		return (84);
-	if (my_str_isnum(cur_data) == 0)
+	if (my_str_isnum(cur_data) == 0) 
 		return (84);
 	anthil->nb_ants = my_getnbr(cur_data);
 	printf("%s : %d\n", "nb_ants", anthil->nb_ants);
 	while (cur_data) {
 		cur_data = next_data(cur_data);
-		if (check_start_end(anthil, cur_data) == 84)
+		if (check_start_end(anthil, cur_data) == 84) {
+			printf("3\n");
 			return (84);
-		if (detect_commands(anthil, cur_data) == 84)
+		}
+		if (detect_commands(anthil, cur_data) == 84) {
+			printf("4\n");
 			return (84);
+		}
 	}
 	return (0);
 }
@@ -60,13 +66,21 @@ int parsing_init(anthil_t *anthil)
 {
 	char *cur_data = NULL;
 
+	if (anthil == NULL) {
+		printf("A\n");
+		return (84);
+	}
 	anthil->rooms = rooms_list_init();
 	anthil->tunnels = tunnels_list_init();
-	if (anthil->rooms == NULL || anthil->tunnels == NULL)
+	if (anthil->rooms == NULL || anthil->tunnels == NULL) {
+		printf("B\n");
 		return (84);
-	if (parsing_loop(anthil, cur_data) == 84)
+	}
+	if (parsing_loop(anthil, cur_data) == 84) {
+		printf("C\n");
 		return (84);
-	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
+	}
+	anthil->nb_rooms = anthil->rooms->nb_elems;
 	printf("%d", anthil->nb_rooms);
 	return (0);
 }

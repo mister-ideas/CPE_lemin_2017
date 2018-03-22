@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "my.h"
 #include "lem_in.h"
-
+#include<string.h>
 void get_start_end_names(char *cur_data, char *name1)
 {
 	int i;
@@ -70,6 +70,7 @@ char *get_names(anthil_t *anthil, char *cur_data, int mode)
 	switch (mode) {
 	case 1:
 		get_start_end_names(cur_data, name1);
+		get_room_name(anthil, cur_data, name1);
 		break;
 	case 2:
 		if (get_room_name(anthil, cur_data, name1) == 84)
@@ -81,4 +82,15 @@ char *get_names(anthil_t *anthil, char *cur_data, int mode)
 		break;
 	}
 	return (name1);
+}
+
+room_elem_t *findroom(char * name,anthil_t *anthil)
+{
+	room_elem_t *ptr = anthil->rooms->first;
+	for(int i = 0;i < anthil->rooms->nb_elems;i++){
+		if(strcmp(name,ptr->room_name) == 0)
+			return (ptr);
+		ptr =  ptr->next;
+	}
+	return (84);
 }

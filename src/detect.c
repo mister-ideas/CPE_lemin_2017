@@ -44,8 +44,8 @@ int detect_type(anthil_t *anthil, char *cur_data)
 
 int detect_commands(anthil_t *anthil, char *cur_data)
 {
-	if (cur_data == NULL)
-		return (84);
+	if (cur_data == NULL) 
+		return (0);
 	if (my_strlen(cur_data) == 7 && cur_data[0] == '#' && cur_data[1] == '#'
 	&& cur_data[2] == 's' && cur_data[3] == 't' && cur_data[4] == 'a'
 	&& cur_data[5] == 'r' && cur_data[6] == 't' && cur_data[7] == '\0')
