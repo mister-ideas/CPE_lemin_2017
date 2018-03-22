@@ -42,14 +42,10 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	anthil->is_start = 0;
 	anthil->is_end = 0;
 	cur_data = next_data(cur_data);
-	if (cur_data == NULL) {
-		printf("1\n");
+	if (cur_data == NULL) 
 		return (84);
-	}
-	if (my_str_isnum(cur_data) == 0) {
-		printf("2\n");
+	if (my_str_isnum(cur_data) == 0) 
 		return (84);
-	}
 	anthil->nb_ants = my_getnbr(cur_data);
 	printf("%s : %d\n", "nb_ants", anthil->nb_ants);
 	while (cur_data) {
@@ -84,7 +80,7 @@ int parsing_init(anthil_t *anthil)
 		printf("C\n");
 		return (84);
 	}
-	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
+	anthil->nb_rooms = anthil->rooms->nb_elems;
 	printf("%d", anthil->nb_rooms);
 	return (0);
 }
