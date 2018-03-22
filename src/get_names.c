@@ -17,7 +17,6 @@ void get_start_end_names(char *cur_data, char *name1)
 	for (i = 0; cur_data[i] != ' '; i++)
 		name1[i] = cur_data[i];
 	name1[i] = '\0';
-	printf("%s : %s\n", "start/end", name1);
 }
 
 int get_room_name(anthil_t *anthil, char *cur_data, char *name1)
@@ -27,7 +26,6 @@ int get_room_name(anthil_t *anthil, char *cur_data, char *name1)
 	for (i = 0; cur_data[i] != ' '; i++)
 		name1[i] = cur_data[i];
 	name1[i] = '\0';
-	printf("%s : %s\n", "room", name1);
 	if (rooms_list_insert(anthil->rooms, name1) == 84)
 		return (84);
 	return (0);
@@ -54,7 +52,6 @@ int get_tunnel_names(anthil_t *anthil, char *cur_data,
 	}
 	name1[index] = '\0';
 	name2[my_strlen(cur_data) - index] = '\0';
-	printf("%s : %s - %s\n", "tunnel", name1, name2);
 	if (tunnels_list_insert(anthil->tunnels, name1, name2) == 84)
 		return (84);
 	return (0);

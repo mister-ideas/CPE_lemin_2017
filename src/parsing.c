@@ -45,9 +45,10 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	if (my_str_isnum(cur_data) == 0)
 		return (84);
 	anthil->nb_ants = my_getnbr(cur_data);
-	printf("%s : %d\n", "nb_ants", anthil->nb_ants);
 	while (cur_data) {
 		cur_data = next_data(cur_data);
+		if (cur_data == NULL)
+			break;
 		if (check_start_end(anthil, cur_data) == 84)
 			return (84);
 		if (detect_commands(anthil, cur_data) == 84)
@@ -66,7 +67,8 @@ int parsing_init(anthil_t *anthil)
 		return (84);
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
-	anthil->nb_rooms = anthil->rooms->nb_elems + 2;
-	printf("%d", anthil->nb_rooms);
+	rooms_list_insert(anthil->rooms, anthil->end);
+	rooms_list_insert(anthil->rooms, anthil->start);
+	anthil->nb_rooms = anthil->rooms->nb_elems;
 	return (0);
 }

@@ -50,8 +50,9 @@ int detect_commands(anthil_t *anthil, char *cur_data)
 	&& cur_data[2] == 's' && cur_data[3] == 't' && cur_data[4] == 'a'
 	&& cur_data[5] == 'r' && cur_data[6] == 't' && cur_data[7] == '\0')
 		anthil->is_start = 1;
-	else if (my_strlen(cur_data) == 5 && cur_data[0] == '#' && cur_data[1] == '#'
-	&& cur_data[2] == 'e' && cur_data[3] == 'n' && cur_data[4] == 'd'
+	else if (my_strlen(cur_data) == 5 && cur_data[0] == '#'
+		&& cur_data[1] == '#' && cur_data[2] == 'e'
+		&& cur_data[3] == 'n' && cur_data[4] == 'd'
 		&& cur_data[5] == '\0')
 		anthil->is_end = 1;
 	else {
