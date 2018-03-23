@@ -39,12 +39,15 @@ tunnels_t *tunnels_list_init(void)
 int rooms_list_insert(rooms_t *list, char *room)
 {
 	room_elem_t *new = malloc(sizeof(*new));
+	room_elem_t *p = list->first;
 
 	if (list == NULL || new == NULL)
 		return (84);
 	new->room_name = room;
-	new->next = list->first;
-	list->first = new;
+	new->next = NULL;
+	while (p->next)
+		p = p->next;
+	p->next = new;
 	list->nb_elems += 1;
 	return (0);
 }
@@ -52,12 +55,15 @@ int rooms_list_insert(rooms_t *list, char *room)
 int tunnels_list_insert(tunnels_t *list, char *entrance, char *exit)
 {
 	tunnel_elem_t *new = malloc(sizeof(*new));
+	tunnel_elem_t *p = list->first;
 
 	if (list == NULL || new == NULL)
 		return (84);
 	new->entrance_name = entrance;
 	new->exit_name = exit;
-	new->next = list->first;
-	list->first = new;
+	new->next = NULL;
+	while (p->next)
+		p = p->next;
+	p->next = new;
 	return (0);
 }

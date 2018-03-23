@@ -10,13 +10,16 @@
 #include "my.h"
 #include "lem_in.h"
 
-void get_start_end_names(char *cur_data, char *name1)
+int get_start_end_names(anthil_t *anthil, char *cur_data, char *name1)
 {
 	int i;
 
 	for (i = 0; cur_data[i] != ' '; i++)
 		name1[i] = cur_data[i];
 	name1[i] = '\0';
+	if (rooms_list_insert(anthil->rooms, name1) == 84)
+		return (84);
+	return (0);
 }
 
 int get_room_name(anthil_t *anthil, char *cur_data, char *name1)
@@ -66,7 +69,8 @@ char *get_names(anthil_t *anthil, char *cur_data, int mode)
 		return (NULL);
 	switch (mode) {
 	case 1:
-		get_start_end_names(cur_data, name1);
+		if (get_start_end_names(anthil, cur_data, name1) == 84)
+			return (NULL);
 		break;
 	case 2:
 		if (get_room_name(anthil, cur_data, name1) == 84)
