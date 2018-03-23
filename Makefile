@@ -12,14 +12,15 @@ SRC=		$(SRC_DIR)/lem_in.c		\
 		$(SRC_DIR)/parsing.c		\
 		$(SRC_DIR)/get_names.c		\
 		$(SRC_DIR)/detect.c		\
+		$(SRC_DIR)/display.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-g3 -W -Wall -fno-builtin
+CFLAGS= 	-W -Wall -fno-builtin
 
 CPPFLAGS=	-I include
 
-LFLAGS=		-L lib/my/ -l my
+LDFLAGS=	-L lib/my/ -l my
 
 NAME=		lem_in
 

@@ -16,7 +16,7 @@ rooms_t *rooms_list_init(void)
 
 	if (list == NULL || element == NULL)
 		return (NULL);
-	element->room_name = "null";
+	element->room_name = NULL;
 	element->next = NULL;
 	list->first = element;
 	return (list);
@@ -29,8 +29,8 @@ tunnels_t *tunnels_list_init(void)
 
 	if (list == NULL || element == NULL)
 		return (NULL);
-	element->entrance_name = "null";
-	element->exit_name = "null";
+	element->entrance_name = NULL;
+	element->exit_name = NULL;
 	element->next = NULL;
 	list->first = element;
 	return (list);

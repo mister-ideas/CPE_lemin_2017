@@ -70,6 +70,6 @@ int parsing_init(anthil_t *anthil)
 	rooms_list_insert(anthil->rooms, anthil->end);
 	rooms_list_insert(anthil->rooms, anthil->start);
 	anthil->nb_rooms = anthil->rooms->nb_elems;
-	printf("%d", anthil->nb_rooms);
+	printf("%d\n", anthil->nb_rooms);
 	return (0);
 }
