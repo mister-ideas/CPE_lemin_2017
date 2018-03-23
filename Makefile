@@ -16,7 +16,7 @@ SRC=		$(SRC_DIR)/lem_in.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-g3 -W -Wall -fno-builtin
+CFLAGS= 	-W -Wall -fno-builtin
 
 CPPFLAGS=	-I include
 
