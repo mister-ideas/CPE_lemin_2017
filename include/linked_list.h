@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2018
+1;4804;0c** EPITECH PROJECT, 2018
 ** Lem-in
 ** File description:
 ** linked_list.h
@@ -12,6 +12,7 @@ typedef struct room_elem room_elem_t;
 struct room_elem
 {
 	char *room_name;
+	char *line;
 	room_elem_t *next;
 };
 
@@ -37,7 +38,7 @@ typedef struct tunnels
 rooms_t *rooms_list_init();
 tunnels_t *tunnels_list_init();
 
-int rooms_list_insert(rooms_t *list, char *room);
+int rooms_list_insert(rooms_t *list, char *room, char *line);
 int tunnels_list_insert(tunnels_t *list, char *entrance, char *exit);
 
 #endif

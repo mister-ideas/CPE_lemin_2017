@@ -27,8 +27,9 @@ int parsing_init(anthil_t *anthil);
 
 /* get_names.c */
 
-int get_start_end_names(anthil_t *anthil, char *cur_data, char *name1);
-int get_room_name(anthil_t *anthil, char *cur_data, char *name1);
+int get_start_end_names(anthil_t *anthil, char *cur_data, char *name1,
+			char *name2);
+int get_room_name(anthil_t *anthil, char *cur_data, char *name1, char *name2);
 int get_tunnel_names(anthil_t *anthil, char *cur_data,
 		char *name1, char *name2);
 char *get_names(anthil_t *anthil, char *cur_data, int mode);
@@ -36,5 +37,9 @@ char *get_names(anthil_t *anthil, char *cur_data, int mode);
 /* detect.c */
 
 int detect_commands(anthil_t *anthil, char *cur_data);
+
+/* display.c */
+
+void initial_display(anthil_t *anthil);
 
 #endif

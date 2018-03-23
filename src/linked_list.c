@@ -17,6 +17,7 @@ rooms_t *rooms_list_init(void)
 	if (list == NULL || element == NULL)
 		return (NULL);
 	element->room_name = NULL;
+	element->line = NULL;
 	element->next = NULL;
 	list->first = element;
 	return (list);
@@ -36,7 +37,7 @@ tunnels_t *tunnels_list_init(void)
 	return (list);
 }
 
-int rooms_list_insert(rooms_t *list, char *room)
+int rooms_list_insert(rooms_t *list, char *room, char *line)
 {
 	room_elem_t *new = malloc(sizeof(*new));
 	room_elem_t *p = list->first;
@@ -44,6 +45,7 @@ int rooms_list_insert(rooms_t *list, char *room)
 	if (list == NULL || new == NULL)
 		return (84);
 	new->room_name = room;
+	new->line = line;
 	new->next = NULL;
 	while (p->next)
 		p = p->next;

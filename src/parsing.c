@@ -68,5 +68,6 @@ int parsing_init(anthil_t *anthil)
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
 	anthil->nb_rooms = anthil->rooms->nb_elems;
+	initial_display(anthil);
 	return (0);
 }
