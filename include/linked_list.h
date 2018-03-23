@@ -1,5 +1,5 @@
 /*
-1;4804;0c** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2018
 ** Lem-in
 ** File description:
 ** linked_list.h
