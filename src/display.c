@@ -5,7 +5,7 @@
 ** display.c
 */
 
-void initial_display(void)
+int initial_display(void)
 {
 	return (0);
 }

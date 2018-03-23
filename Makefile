@@ -28,7 +28,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 		make -C lib/src/
-		gcc -o $(NAME) $(OBJ) $(LFLAGS)
+		gcc -o $(NAME) $(OBJ) $(LDFLAGS)
 
 clean:
 		make clean -C lib/src/
