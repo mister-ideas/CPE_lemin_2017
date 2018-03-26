@@ -1,0 +1,11 @@
+1
+##start
+room1 23 3
+room2 16 7
+#comment
+room3 16 3
+##end
+room4 9 5
+room1-room2
+room2-room3
+room3-room4
