@@ -13,7 +13,8 @@
 char *next_data(char *cur_data)
 {
 	cur_data = get_next_line(0);
-	if (cur_data && cur_data[0] == '#' && cur_data[1] != '#')
+	if (cur_data && ((cur_data[0] == '#' && cur_data[1] != '#') ||
+			(cur_data[0] == '\0')))
 		cur_data = get_next_line(0);
 	return (cur_data);
 }
