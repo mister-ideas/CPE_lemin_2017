@@ -51,11 +51,9 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	while (cur_data) {
 		cur_data = next_data(cur_data);
 		if (check_start_end(anthil, cur_data) == 84) {
-			printf("3\n");
 			return (84);
 		}
 		if (detect_commands(anthil, cur_data) == 84) {
-			printf("4\n");
 			return (84);
 		}
 	}
@@ -67,13 +65,11 @@ int parsing_init(anthil_t *anthil)
 	char *cur_data = NULL;
 
 	if (anthil == NULL) {
-		printf("A\n");
 		return (84);
 	}
 	anthil->rooms = rooms_list_init();
 	anthil->tunnels = tunnels_list_init();
 	if (anthil->rooms == NULL || anthil->tunnels == NULL) {
-		printf("B\n");
 		return (84);
 	}
 	if (parsing_loop(anthil, cur_data) == 84) {
