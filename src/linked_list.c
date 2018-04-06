@@ -68,5 +68,6 @@ int tunnels_list_insert(tunnels_t *list, char *entrance, char *exit)
 	while (p->next)
 		p = p->next;
 	p->next = new;
+	list->nb_elems += 1;
 	return (0);
 }

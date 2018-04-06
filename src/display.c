@@ -15,9 +15,11 @@ void rooms_display(anthil_t *anthil)
 
 	my_putstr("#rooms\n");
 	while (p) {
-		if (p->room_name == anthil->start)
+		if ((anthil->start && p->room_name) &&
+		my_strcmp(p->room_name, anthil->start) == 0)
 			my_putstr("##start\n");
-		else if (p->room_name == anthil->end)
+		if ((anthil->end && p->room_name) &&
+		my_strcmp(p->room_name, anthil->end) == 0)
 			my_putstr("##end\n");
 		if (p->line) {
 			my_putstr(p->line);
@@ -27,19 +29,13 @@ void rooms_display(anthil_t *anthil)
 	}
 }
 
-void tunnels_display(anthil_t *anthil)
+void tunnel_display(tunnel_elem_t *p)
 {
-	tunnel_elem_t *p = anthil->tunnels->first;
-
-	my_putstr("#tunnels\n");
-	while (p) {
-		if (p->entrance_name && p->exit_name) {
-			my_putstr(p->entrance_name);
-			my_putchar('-');
-			my_putstr(p->exit_name);
-			my_putchar('\n');
-		}
-		p = p->next;
+	if (p->entrance_name && p->exit_name) {
+		my_putstr(p->entrance_name);
+		my_putchar('-');
+		my_putstr(p->exit_name);
+		my_putchar('\n');
 	}
 }
 
@@ -63,7 +59,7 @@ void print_ant(anthil_t *anthil, path_t *path, int **nb)
 		path->max_val++;
 }
 
-void move_display(anthil_t *anthil, path_t *path)
+void moves_display(anthil_t *anthil, path_t *path)
 {
 	int *nb = malloc(sizeof(int) * anthil->nb_ants);
 
@@ -71,17 +67,23 @@ void move_display(anthil_t *anthil, path_t *path)
 		return;
 	for (int index = 0; index < anthil->nb_ants; index ++)
 		nb[index] = 1;
-	while (path->printed < anthil->nb_ants) {
+	while (path->printed < anthil->nb_ants)
 		print_ant(anthil, path, &nb);
-	}
 }
 
-void initial_display(anthil_t *anthil)
+int initial_display(anthil_t *anthil)
 {
 	my_putstr("#number_of_ants\n");
 	my_put_nbr(anthil->nb_ants);
 	my_putchar('\n');
-	rooms_display(anthil);
-	tunnels_display(anthil);
-	my_putstr("#moves\n");
+	if (anthil->nb_rooms != 0) {
+		rooms_display(anthil);
+		if (anthil->nb_tunnels == 0)
+			return (1);
+		my_putstr("#tunnels\n");
+		if (check_errors(anthil) > 0)
+			return (1);
+	} else
+		return (1);
+	return (0);
 }

@@ -13,6 +13,7 @@
 typedef struct anthil {
 	int nb_ants;
 	int nb_rooms;
+	int nb_tunnels;
 	char *start;
 	char *end;
 	rooms_t *rooms;
@@ -56,8 +57,9 @@ int detect_commands(anthil_t *anthil, char *cur_data);
 
 /* display.c */
 
-void move_display(anthil_t *anthil, path_t *path);
-void initial_display(anthil_t *anthil);
+void moves_display(anthil_t *anthil, path_t *path);
+int initial_display(anthil_t *anthil);
+void tunnel_display(tunnel_elem_t *p);
 
 /* errors.c */
 

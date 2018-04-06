@@ -21,7 +21,7 @@ SRC=		$(SRC_DIR)lem_in.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-Wall -Wextra
+CFLAGS= 	-Wall -Wextra -g3
 
 CPPFLAGS=	-I include
 

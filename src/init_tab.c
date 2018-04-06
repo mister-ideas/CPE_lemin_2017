@@ -73,7 +73,8 @@ char **algotab(anthil_t *anthil, char **tabmap, int indicestart, int indiceend)
 		i++;
 	}
 	path->hist[c] = indiceend;
-	move_display(anthil, path);
+	my_putstr("#moves\n");
+	moves_display(anthil, path);
 	return (tabmap);
 }
 

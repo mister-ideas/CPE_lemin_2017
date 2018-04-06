@@ -34,6 +34,7 @@ struct tunnel_elem
 typedef struct tunnels
 {
 	tunnel_elem_t *first;
+	int nb_elems;
 } tunnels_t;
 
 rooms_t *rooms_list_init();

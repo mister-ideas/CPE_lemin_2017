@@ -30,30 +30,26 @@ int check_room_exists(anthil_t *anthil, tunnel_elem_t *p)
 	return (error);
 }
 
-int check_entrance_exit_links(anthil_t *anthil, tunnel_elem_t *p, int error)
+int check_tunnel(anthil_t *anthil, tunnel_elem_t *p)
 {
-	if (my_strcmp(p->entrance_name, anthil->start) == 0 ||
-	my_strcmp(p->entrance_name, anthil->end) == 0 ||
-	my_strcmp(p->exit_name, anthil->start) == 0 ||
-	my_strcmp(p->exit_name, anthil->end) == 0)
-		error -= 1;
-	return (error);
+	if (p->entrance_name && p->exit_name) {
+		if (check_same_rooms(p) == 1)
+			return (1);
+		if (check_room_exists(anthil, p) != 0)
+			return (1);
+	}
+	return (0);
 }
 
 int check_errors(anthil_t *anthil)
 {
 	tunnel_elem_t *p = anthil->tunnels->first;
-	int error = 2;
 
 	while (p) {
-		if (p->entrance_name && p->exit_name) {
-			if (check_same_rooms(p) == 1)
-				return (1);
-			if (check_room_exists(anthil, p) != 0)
-				return (1);
-			error = check_entrance_exit_links(anthil, p, error);
-		}
+		if (check_tunnel(anthil, p) == 1)
+			return (1);
+		tunnel_display(p);
 		p = p->next;
 	}
-	return (error);
+	return (0);
 }

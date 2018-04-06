@@ -49,6 +49,9 @@ int main(int ac, char **av)
 		return (84);
 	indicestart = indicestartfu(anthil);
 	indiceend = indicesendfu(anthil);
-	init_tab(anthil, indicestart, indiceend);
+	if (anthil->nb_rooms > 1)
+		init_tab(anthil, indicestart, indiceend);
+	else
+		return (84);
 	return (0);
 }
