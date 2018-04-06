@@ -49,7 +49,7 @@ int main(int ac, char **av)
 		return (84);
 	indicestart = indicestartfu(anthil);
 	indiceend = indicesendfu(anthil);
-	if (anthil->nb_rooms > 1)
+	if (anthil->nb_rooms > 1 && anthil->start && anthil->end)
 		init_tab(anthil, indicestart, indiceend);
 	else
 		return (84);
