@@ -5,6 +5,7 @@
 ** display.c
 */
 
+#include <stdlib.h>
 #include "my.h"
 #include "lem_in.h"
 
@@ -39,6 +40,39 @@ void tunnels_display(anthil_t *anthil)
 			my_putchar('\n');
 		}
 		p = p->next;
+	}
+}
+
+void print_ant(anthil_t *anthil, path_t *path, int **nb)
+{
+	char *room = NULL;
+
+	for (int i = path->min_val; i < path->max_val; i++) {
+		if (i > (path->min_val))
+			my_putchar(' ');
+		my_putchar('P');
+		my_put_nbr(i);
+		my_putchar('-');
+		room = which_name(anthil, path, (*nb)[i - 1]);
+		if (room)
+			my_putstr(room);
+		(*nb)[i - 1] += 1;
+	}
+	my_putchar('\n');
+	if (path->max_val <= anthil->nb_ants)
+		path->max_val++;
+}
+
+void move_display(anthil_t *anthil, path_t *path)
+{
+	int *nb = malloc(sizeof(int) * anthil->nb_ants);
+
+	if (nb == NULL)
+		return;
+	for (int index = 0; index < anthil->nb_ants; index ++)
+		nb[index] = 1;
+	while (path->printed < anthil->nb_ants) {
+		print_ant(anthil, path, &nb);
 	}
 }
 

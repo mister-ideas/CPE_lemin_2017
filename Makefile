@@ -16,6 +16,8 @@ SRC=		$(SRC_DIR)lem_in.c		\
 		$(SRC_DIR)detect.c		\
 		$(SRC_DIR)display.c		\
 		$(SRC_DIR)errors.c		\
+		$(SRC_DIR)init_tab.c		\
+		$(SRC_DIR)my_path.c		\
 
 OBJ=		$(SRC:.c=.o)
 

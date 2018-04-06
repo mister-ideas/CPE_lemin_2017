@@ -14,6 +14,7 @@ struct room_elem
 	char *room_name;
 	char *line;
 	room_elem_t *next;
+	int room_nbr;
 };
 
 typedef struct rooms

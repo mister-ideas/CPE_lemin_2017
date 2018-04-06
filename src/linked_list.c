@@ -51,6 +51,7 @@ int rooms_list_insert(rooms_t *list, char *room, char *line)
 		p = p->next;
 	p->next = new;
 	list->nb_elems += 1;
+	new->room_nbr = list->nb_elems - 1;
 	return (0);
 }
 
