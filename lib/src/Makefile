@@ -17,7 +17,7 @@ SRC=		my_putchar.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS=		-W -Wall -fno-builtin
+CFLAGS=		-Wall -Wextra
 
 CPPFLAGS=	-I ../../include
 
