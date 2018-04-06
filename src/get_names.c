@@ -92,7 +92,7 @@ int get_tunnel_names(anthil_t *anthil, char *cur_data,
 		}
 	}
 	name1[index] = '\0';
-	name2[my_strlen(cur_data) - index] = '\0';
+	name2[my_strlen(cur_data) - index - 1] = '\0';
 	if (tunnels_list_insert(anthil->tunnels, name1, name2) == 84)
 		return (84);
 	return (0);
@@ -101,7 +101,7 @@ int get_tunnel_names(anthil_t *anthil, char *cur_data,
 char *get_names(anthil_t *anthil, char *cur_data, int mode)
 {
 	char *name1 = malloc(sizeof(char) * my_strlen(cur_data));
-	char *name2 = malloc(sizeof(char) * my_strlen(cur_data));
+	char *name2 = malloc(sizeof(char) * my_strlen(cur_data) + 1);
 
 	if (name1 == NULL || name2 == NULL)
 		return (NULL);
