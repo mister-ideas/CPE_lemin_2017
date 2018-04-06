@@ -13,6 +13,7 @@ SRC=		my_putchar.c		\
 		my_getnbr.c		\
 		my_str_isnum.c		\
 		get_next_line.c		\
+		my_strcmp.c		\
 
 OBJ=		$(SRC:.c=.o)
 

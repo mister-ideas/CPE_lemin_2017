@@ -17,6 +17,7 @@ int my_strlen(char const *str);
 int my_put_nbr(int nb);
 int my_getnbr(char const *str);
 int my_str_isnum(char const *str);
+int my_strcmp(char *s1, char *s2);
 
 char *my_strcat(char *dest, char const *src);
 char *get_next_line(int fd);
