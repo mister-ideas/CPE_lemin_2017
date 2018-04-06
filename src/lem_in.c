@@ -18,7 +18,7 @@ int main(int ac, char **av)
 	anthil = malloc(sizeof(*anthil));
 	if (anthil == NULL)
 		return (84);
-	if (parsing_init(anthil) == 84)
+	if (parsing(anthil) == 84)
 		return (84);
 	return (0);
 }

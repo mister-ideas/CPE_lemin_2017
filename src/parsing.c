@@ -58,7 +58,7 @@ int parsing_loop(anthil_t *anthil, char *cur_data)
 	return (0);
 }
 
-int parsing_init(anthil_t *anthil)
+int parsing(anthil_t *anthil)
 {
 	char *cur_data = NULL;
 
@@ -69,6 +69,8 @@ int parsing_init(anthil_t *anthil)
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
 	anthil->nb_rooms = anthil->rooms->nb_elems;
+	if (check_errors(anthil) > 0)
+		return (84);
 	initial_display(anthil);
 	return (0);
 }
