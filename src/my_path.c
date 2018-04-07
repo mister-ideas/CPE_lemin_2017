@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_path.c
+** Lem-in
 ** File description:
-** de
+** my_path.c
 */
 
 #include <stdio.h>
