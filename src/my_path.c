@@ -30,8 +30,12 @@ char *which_name(anthil_t *anthil, path_t *path, int nb)
 	int i = 0;
 	room_elem_t *tmp = anthil->rooms->first->next;
 
-	for (; i < (path->hist[nb]); i++)
-		tmp = tmp->next;
+	for (; i < (path->hist[nb]); i++) {
+		if (tmp->next != NULL)
+			tmp = tmp->next;
+		else
+			return (NULL);
+	}
 	if (my_strcmp(tmp->room_name, anthil->end) == 0) {
 		path->min_val++;
 		path->printed++;

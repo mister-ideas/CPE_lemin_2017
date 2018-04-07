@@ -57,7 +57,7 @@ int detect_commands(anthil_t *anthil, char *cur_data);
 
 /* display.c */
 
-void moves_display(anthil_t *anthil, path_t *path);
+int moves_display(anthil_t *anthil, path_t *path);
 int initial_display(anthil_t *anthil);
 void tunnel_display(tunnel_elem_t *p);
 

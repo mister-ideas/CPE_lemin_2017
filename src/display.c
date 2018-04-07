@@ -39,7 +39,7 @@ void tunnel_display(tunnel_elem_t *p)
 	}
 }
 
-void print_ant(anthil_t *anthil, path_t *path, int **nb)
+int print_ant(anthil_t *anthil, path_t *path, int **nb)
 {
 	char *room = NULL;
 	int tmp = path->min_val;
@@ -51,25 +51,32 @@ void print_ant(anthil_t *anthil, path_t *path, int **nb)
 		my_put_nbr(i);
 		my_putchar('-');
 		room = which_name(anthil, path, (*nb)[i - 1]);
-		if (room)
-			my_putstr(room);
+		if (room == NULL)
+			return (84);
+		my_putstr(room);
 		(*nb)[i - 1] += 1;
 	}
 	my_putchar('\n');
 	if (path->max_val <= anthil->nb_ants)
 		path->max_val++;
+	return (0);
 }
 
-void moves_display(anthil_t *anthil, path_t *path)
+int moves_display(anthil_t *anthil, path_t *path)
 {
 	int *nb = malloc(sizeof(int) * anthil->nb_ants);
+	int ret = 0;
 
 	if (nb == NULL)
-		return;
+		return (84);
 	for (int index = 0; index < anthil->nb_ants; index ++)
 		nb[index] = 1;
-	while (path->printed < anthil->nb_ants)
-		print_ant(anthil, path, &nb);
+	while (path->printed < anthil->nb_ants) {
+		ret = print_ant(anthil, path, &nb);
+		if (ret == 84)
+			return (84);
+	}
+	return (0);
 }
 
 int initial_display(anthil_t *anthil)
