@@ -49,6 +49,8 @@ path_t *init_path(path_t *path)
 		return (NULL);
 	path->max = 20;
 	path->hist = malloc(sizeof(int) * path->max);
+	if (path->hist == NULL)
+		return (NULL);
 	path->actual = 0;
 	path->printed = 0;
 	path->min_val = 1;
