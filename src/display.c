@@ -42,9 +42,10 @@ void tunnel_display(tunnel_elem_t *p)
 void print_ant(anthil_t *anthil, path_t *path, int **nb)
 {
 	char *room = NULL;
+	int tmp = path->min_val;
 
 	for (int i = path->min_val; i < path->max_val; i++) {
-		if (i > (path->min_val))
+		if (i > tmp)
 			my_putchar(' ');
 		my_putchar('P');
 		my_put_nbr(i);
