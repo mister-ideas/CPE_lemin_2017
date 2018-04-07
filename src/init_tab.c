@@ -23,7 +23,7 @@ void affichage(int *tabmove,int taille,anthil_t *anthil,int *path)
 {
 	for(int i =  anthil->nb_ants  + anthil->lg_path - 1;i >= anthil->nb_ants;i--) {
 		if(tabmove[i] != 0)
-			printf(" P%d-%s",tabmove[i],findnamemo(path[i - anthil->nb_ants],anthil));
+			printf(" P%d-%s",tabmove[i],findnamemo(path[i - anthil->nb_ants + 1],anthil));
 	}
 	printf("\n");
 }
