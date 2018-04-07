@@ -64,17 +64,13 @@ int parsing(anthil_t *anthil)
 
 	anthil->rooms = rooms_list_init();
 	anthil->tunnels = tunnels_list_init();
-	anthil->rooms->nb_elems = 0;
-	anthil->tunnels->nb_elems = 0;
-	anthil->start = NULL;
-	anthil->end = NULL;
 	if (anthil->rooms == NULL || anthil->tunnels == NULL)
 		return (84);
 	if (parsing_loop(anthil, cur_data) == 84)
 		return (84);
 	anthil->nb_rooms = anthil->rooms->nb_elems;
-	anthil->nb_tunnels = anthil->tunnels->nb_elems;
-	if (initial_display(anthil) == 1)
+	if (check_errors(anthil) > 0)
 		return (84);
+	initial_display(anthil);
 	return (0);
 }

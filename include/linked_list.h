@@ -13,8 +13,8 @@ struct room_elem
 {
 	char *room_name;
 	char *line;
-	room_elem_t *next;
 	int room_nbr;
+	room_elem_t *next;
 };
 
 typedef struct rooms
@@ -34,7 +34,6 @@ struct tunnel_elem
 typedef struct tunnels
 {
 	tunnel_elem_t *first;
-	int nb_elems;
 } tunnels_t;
 
 rooms_t *rooms_list_init();
