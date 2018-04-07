@@ -49,6 +49,7 @@ int main(int ac, char **av)
 		return (84);
 	indicestart = indicestartfu(anthil);
 	indiceend = indicesendfu(anthil);
-	init_tab(anthil, indicestart, indiceend);
+	 init_tab(anthil, indicestart, indiceend);
+	
 	return (0);
 }
