@@ -64,6 +64,7 @@ void tunnel_display(tunnel_elem_t *p);
 /* errors.c */
 
 int check_errors(anthil_t *anthil);
+int check_same_rooms(anthil_t *anthil, room_elem_t *p);
 
 /* init_tab.c  */
 

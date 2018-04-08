@@ -9,7 +9,7 @@
 #include "my.h"
 #include "lem_in.h"
 
-void rooms_display(anthil_t *anthil)
+int rooms_display(anthil_t *anthil)
 {
 	room_elem_t *p = anthil->rooms->first;
 
@@ -25,8 +25,11 @@ void rooms_display(anthil_t *anthil)
 			my_putstr(p->line);
 			my_putchar('\n');
 		}
+		if (check_same_rooms(anthil, p) == 1)
+			return (1);
 		p = p->next;
 	}
+	return (0);
 }
 
 void tunnel_display(tunnel_elem_t *p)
@@ -85,7 +88,8 @@ int initial_display(anthil_t *anthil)
 	my_put_nbr(anthil->nb_ants);
 	my_putchar('\n');
 	if (anthil->nb_rooms != 0) {
-		rooms_display(anthil);
+		if (rooms_display(anthil) == 1)
+			return (1);
 		if (anthil->nb_tunnels == 0)
 			return (1);
 		my_putstr("#tunnels\n");
