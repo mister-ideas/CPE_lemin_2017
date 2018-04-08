@@ -49,7 +49,7 @@ char **algotab(anthil_t *anthil, char **tabmap, int indicestart, int indiceend)
 	int indicenow = indicestart;
 	int c = 0;
 	int i = 0;
-
+	
 	path = init_path(path);
 	while (indiceend != indicenow) {
 		if (path == NULL)
