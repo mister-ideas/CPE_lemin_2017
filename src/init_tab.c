@@ -43,17 +43,11 @@ void addtunnel(anthil_t *anthil, char **tabmap)
 	}
 }
 
-char **algotab(anthil_t *anthil, char **tabmap, int indicestart, int indiceend)
+void algo(path_t *path, char **tabmap, int indicenow, int indiceend)
 {
-	path_t *path = malloc(sizeof(path_t));
-	int indicenow = indicestart;
 	int c = 0;
-	int i = 0;
 
-	path = init_path(path);
-	while (indiceend != indicenow) {
-		if (path == NULL)
-			return (NULL);
+	for (int i = 0; indiceend != indicenow; i++) {
 		if (tabmap[indicenow][i] == '1') {
 			path->hist[c] = indicenow;
 			path->actual++;
@@ -70,9 +64,19 @@ char **algotab(anthil_t *anthil, char **tabmap, int indicestart, int indiceend)
 			c = c - 1;
 			i = 0;
 		}
-		i++;
 	}
 	path->hist[c] = indiceend;
+}
+
+char **algotab(anthil_t *anthil, char **tabmap, int indicestart, int indiceend)
+{
+	path_t *path = malloc(sizeof(path_t));
+	int indicenow = indicestart;
+
+	path = init_path(path);
+	if (path == NULL)
+		return (NULL);
+	algo(path, tabmap, indicenow, indiceend);
 	my_putstr("#moves\n");
 	moves_display(anthil, path);
 	return (tabmap);
